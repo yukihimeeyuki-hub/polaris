@@ -17,16 +17,12 @@ pub fn run() {
                                          let show_item = MenuItem::with_id(app, "show", "显示主窗口", true, None::<&str>)?;
                                          let quit_item = MenuItem::with_id(app, "quit", "退出应用", true, None::<&str>)?;
                                          let menu = Menu::with_items(app, &[&show_item, &quit_item])?;
-
-                                         // 2. 获取主窗口的句柄（假设主窗口的 label 是 "main"）
-                                         let main_window = app.get_webview_window("main").unwrap();
-
                                          // 3. 构建托盘图标
                                          TrayIconBuilder::new()
                                              .icon(app.default_window_icon().unwrap().clone()) // 设置托盘图标
                                              .tooltip("北极星") // 鼠标悬停提示
                                              .menu(&menu) // 绑定右键菜单
-                                             .menu_on_left_click(false) // 【核心】关闭左键单击弹出菜单的默认行为
+                                             .show_menu_on_left_click(false) // 【核心】关闭左键单击弹出菜单的默认行为
                                              .on_menu_event(|app, event| {
                                                  // 处理菜单项的点击事件
                                                  match event.id().as_ref() {
