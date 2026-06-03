@@ -21,7 +21,11 @@
         "width": 100,
         "height": 100,
         "closable": false,
-        "url": "/PromptBox"
+        "url": "/PromptBox",
+        "backgroundColor": "#00000000",
+        "decorations": false,
+        "transparent": true,
+        "skipTaskbar": true
 
       }
     ],
@@ -39,5 +43,19 @@
       "icons/icon.icns",
       "icons/icon.ico"
     ]
+  },
+  "plugins": {
+    "updater": {
+      "active": true,
+      "dialog": {
+        "title": "更新提示",
+        "message": "检测到新版本，是否下载并安装？",
+        "buttons": ["取消", "下载并安装"],
+        "cancelButton": 0,
+        "updateButton": 1
+      },
+      "endpoint": "https://api.github.com/repos/yukihimeeyuki/polaris/releases/latest.json",
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEQ2REIxRDZGRTNFQkNGMTEKUldRUnordmpieDNiMXZmUTNHdTlFQnB5QitWYS9JSEc1akxma0lCSTNBanpIVElJaC9mdkdxTTkK"
+    }
   }
 }
