@@ -1,13 +1,14 @@
 // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
 
 mod http;
-mod fs;
+mod file_util;
 
 use tauri::{
     menu::{Menu, MenuItem},
     tray::{MouseButton, MouseButtonState, TrayIconBuilder, TrayIconEvent},
     Manager,
 };
+use file_util::text_file_operations::{create_text_file, delete_text_file, read_text_file, save_text_file, edit_text_file};
 #[tauri::command]
 fn greet(name: &str) -> String {
     format!("Hello, {}! You've been greeted from Rust!", name)
@@ -81,7 +82,7 @@ pub fn run() {
          .plugin(tauri_plugin_fs::init())
         .plugin(tauri_plugin_updater::Builder::new().build())
         .plugin(tauri_plugin_opener::init())
-        .invoke_handler(tauri::generate_handler![greet])
+        .invoke_handler(tauri::generate_handler![greet, create_text_file, delete_text_file, read_text_file, save_text_file, edit_text_file])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
