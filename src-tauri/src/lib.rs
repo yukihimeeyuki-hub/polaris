@@ -1,15 +1,24 @@
 // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
 
-mod http;
+mod crypto;
+mod db;
 mod file_util;
+mod http;
 
+use crypto::*;
+use db::sql::*;
+use file_util::binary_file_operations::{
+    create_binary_file, create_custom_binary_file, delete_binary_file, extract_custom_binary_data,
+    read_binary_file, read_binary_file_data, read_custom_binary_file, save_binary_file,
+};
+use file_util::text_file_operations::{
+    create_text_file, delete_text_file, edit_text_file, read_text_file, save_text_file,
+};
 use tauri::{
     menu::{Menu, MenuItem},
     tray::{MouseButton, MouseButtonState, TrayIconBuilder, TrayIconEvent},
     Manager,
 };
-use file_util::text_file_operations::{create_text_file, delete_text_file, read_text_file, save_text_file, edit_text_file};
-use file_util::binary_file_operations::{create_binary_file, delete_binary_file, read_binary_file, read_binary_file_data, save_binary_file, create_custom_binary_file, read_custom_binary_file, extract_custom_binary_data};
 #[tauri::command]
 fn greet(name: &str) -> String {
     format!("Hello, {}! You've been greeted from Rust!", name)
@@ -80,10 +89,43 @@ pub fn run() {
 
             Ok(())
         })
-         .plugin(tauri_plugin_fs::init())
+        .plugin(tauri_plugin_fs::init())
         .plugin(tauri_plugin_updater::Builder::new().build())
         .plugin(tauri_plugin_opener::init())
-        .invoke_handler(tauri::generate_handler![greet, create_text_file, delete_text_file, read_text_file, save_text_file, edit_text_file, create_binary_file, delete_binary_file, read_binary_file, read_binary_file_data, save_binary_file, create_custom_binary_file, read_custom_binary_file, extract_custom_binary_data])
+        .invoke_handler(tauri::generate_handler![
+            create_text_file,
+            delete_text_file,
+            read_text_file,
+            save_text_file,
+            edit_text_file,
+            create_binary_file,
+            delete_binary_file,
+            read_binary_file,
+            read_binary_file_data,
+            save_binary_file,
+            create_custom_binary_file,
+            read_custom_binary_file,
+            extract_custom_binary_data,
+            create_table,
+            drop_table,
+            alter_table,
+            table_exists,
+            list_tables,
+            insert,
+            update,
+            delete,
+            data_exists,
+            query_one,
+            query_all,
+            sign,
+            verify_signature,
+            decrypt,
+            encrypt,
+            generate_aes256_key,
+            generate_aes128_key,
+            generate_nonce,
+            Aes128Key
+        ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
