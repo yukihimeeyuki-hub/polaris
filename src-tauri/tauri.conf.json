@@ -1,4 +1,3 @@
-
 {
   "$schema": "https://schema.tauri.app/config/2",
   "productName": "polaris",
@@ -13,21 +12,25 @@
   "app": {
     "windows": [
       {
+        "label": "MainWindow",
         "title": "polaris",
         "width": 800,
         "height": 600
-      },{
+      },
+      {
         "label": "StatusWindow",
         "title": "",
         "width": 100,
         "height": 100,
         "closable": false,
         "url": "/PromptBox",
-        "backgroundColor": "#00000000",
         "decorations": false,
         "transparent": true,
-        "skipTaskbar": true
-
+        "skipTaskbar": true,
+        "alwaysOnTop": true,
+        "visible": false,
+        "resizable": false,
+        "shadow": false
       }
     ],
     "security": {
@@ -51,7 +54,10 @@
       "dialog": {
         "title": "更新提示",
         "message": "检测到新版本，是否下载并安装？",
-        "buttons": ["取消", "下载并安装"],
+        "buttons": [
+          "取消",
+          "下载并安装"
+        ],
         "cancelButton": 0,
         "updateButton": 1
       },

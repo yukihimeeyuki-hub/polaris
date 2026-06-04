@@ -8,7 +8,8 @@ import {
   exists,
 } from '@tauri-apps/plugin-fs';
 import {Button} from "@/components/ui/button";
-
+import {ref} from "vue";
+const texts=ref('')
 const  createFile=async ()=>{
   const isExists=await exists("config.json",{baseDir:BaseDirectory.AppLocalData});
   if(!isExists){
@@ -17,6 +18,7 @@ const  createFile=async ()=>{
   }else{
     const data=await readTextFile("config.json",{baseDir:BaseDirectory.AppLocalData});
     console.log(data);
+    texts.value=data;
   }
 }
 
@@ -24,6 +26,7 @@ const  createFile=async ()=>{
 
 <template>
 <div class="home">
+  {{texts}}
 
 <Button @click="createFile">
   读取文件
