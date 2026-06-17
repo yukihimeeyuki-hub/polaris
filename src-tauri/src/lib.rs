@@ -1,6 +1,9 @@
 mod http;
 mod setting;
 mod window;
+mod crypto_algorithms;
+mod crypto_core;
+
 use http::commands::init_http_client;
 use tauri::Manager;
 use window::tray::create_tray;
