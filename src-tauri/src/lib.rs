@@ -1,11 +1,23 @@
+mod http;
 mod setting;
 mod window;
+use http::commands::init_http_client;
 use tauri::Manager;
 use window::tray::create_tray;
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
+        .manage(init_http_client())
+        .invoke_handler(tauri::generate_handler![
+            http::commands::http_request,
+            http::commands::http_get,
+            http::commands::http_post,
+            http::commands::http_put,
+            http::commands::http_delete,
+            http::commands::http_head,
+            http::commands::http_options,
+        ])
         .setup(|app| {
             let window = app.get_webview_window("StatusWindow").unwrap();
 

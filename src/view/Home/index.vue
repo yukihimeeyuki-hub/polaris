@@ -8,7 +8,8 @@ import {
   exists,
 } from '@tauri-apps/plugin-fs';
 import {Button} from "@/components/ui/button";
-import {ref} from "vue";
+import {onMounted, ref} from "vue";
+import {http} from "@/lib/http.ts";
 const texts=ref('')
 const  createFile=async ()=>{
   const isExists=await exists("config.json",{baseDir:BaseDirectory.AppLocalData});
@@ -22,6 +23,12 @@ const  createFile=async ()=>{
   }
 }
 
+onMounted(()=>{
+  http.get('http://localhost:3000/api/hello').then(res=>{
+    console.log(res,"res");
+  })
+
+})
 </script>
 
 <template>
