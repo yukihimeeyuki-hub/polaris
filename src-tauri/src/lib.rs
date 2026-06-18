@@ -3,7 +3,9 @@ mod setting;
 mod window;
 mod crypto_algorithms;
 mod crypto_core;
+mod database;
 
+use database::commands::init_database_manager;
 use http::commands::init_http_client;
 use tauri::Manager;
 use window::tray::create_tray;
@@ -12,6 +14,7 @@ use window::tray::create_tray;
 pub fn run() {
     tauri::Builder::default()
         .manage(init_http_client())
+        .manage(init_database_manager())
         .invoke_handler(tauri::generate_handler![
             http::commands::http_request,
             http::commands::http_get,
@@ -31,6 +34,19 @@ pub fn run() {
             crypto_core::commands::crypto_rsa_decrypt,
             crypto_core::commands::crypto_sign,
             crypto_core::commands::crypto_verify,
+            database::commands::db_create,
+            database::commands::db_delete,
+            database::commands::db_create_table,
+            database::commands::db_drop_table,
+            database::commands::db_add_column,
+            database::commands::db_rename_column,
+            database::commands::db_list_tables,
+            database::commands::db_insert,
+            database::commands::db_insert_batch,
+            database::commands::db_update,
+            database::commands::db_delete_data,
+            database::commands::db_select,
+            database::commands::db_select_one,
         ])
         .setup(|app| {
             let window = app.get_webview_window("StatusWindow").unwrap();
