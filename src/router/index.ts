@@ -12,7 +12,7 @@ const router=createRouter({
     name:"PromptBox",
     component:()=>import("@/view/PromptBox.vue"),
   },{
-    path:"/Login",
+    path:"/login",
     name:"Login",
     component:()=>import("@/view/Login/index.vue"),
   },{

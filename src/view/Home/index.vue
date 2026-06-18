@@ -10,6 +10,7 @@ import {
 import {Button} from "@/components/ui/button";
 import {onMounted, ref} from "vue";
 import {http} from "@/lib/http.ts";
+import router from "@/router";
 const texts=ref('')
 const  createFile=async ()=>{
   const isExists=await exists("config.json",{baseDir:BaseDirectory.AppLocalData});
@@ -29,6 +30,9 @@ onMounted(()=>{
   })
 
 })
+const  JumpLogin=()=>{
+  router.push('/login')
+}
 </script>
 
 <template>
@@ -37,7 +41,11 @@ onMounted(()=>{
 
 <Button @click="createFile">
   读取文件
-</Button></div>
+</Button>
+<Button @click="JumpLogin">
+  跳转登录页面
+</Button>
+</div>
 </template>
 
 <style scoped lang="scss">
