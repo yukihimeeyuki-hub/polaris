@@ -71,6 +71,9 @@ importers:
       tailwindcss:
         specifier: ^4.3.0
         version: 4.3.0
+      vaul-vue:
+        specifier: ^0.4.1
+        version: 0.4.1(reka-ui@2.9.8(vue@3.5.35(typescript@5.6.2)))(vue@3.5.35(typescript@5.6.2))
       vee-validate:
         specifier: ^4.15.1
         version: 4.15.1(vue@3.5.35(typescript@5.6.2))
@@ -787,6 +790,9 @@ packages:
   '@types/node@25.9.1':
     resolution: {integrity: sha512-xfrlY7UD5rMJk3ZVJP8BNzS28J36YJg+xp+LPXV1TdWxr8uMH5A860QNxYDGQe/ylDSgjxE52Q9VnO7p75tJxg==}
 
+  '@types/web-bluetooth@0.0.20':
+    resolution: {integrity: sha512-g9gZnnXVq7gM7v3tJCWV/qw7w+KeOlSHAhgF9RytFyifW6AF61hdT2ucrYhPq9hLs5JIryeupHV3qGk95dH9ow==}
+
   '@types/web-bluetooth@0.0.21':
     resolution: {integrity: sha512-oIQLCGWtcFZy2JW77j9k8nHzAOpqMHLQejDA48XXMWH6tjCQHz5RCFz1bzsmROyL6PUm+LLnUiI4BCn221inxA==}
 
@@ -887,13 +893,22 @@ packages:
   '@vue/shared@3.5.35':
     resolution: {integrity: sha512-zSbjL7gRXwks2ZQLRGCajBtBXEOXW9Ddhn/HvSdrGkE2dqGnumzW8XtusRrxrE9LvqtiqDXQ+A60Hp6mvdYxfA==}
 
+  '@vueuse/core@10.8.0':
+    resolution: {integrity: sha512-G9Ok9fjx10TkNIPn8V1dJmK1NcdJCtYmDRyYiTMUyJ1p0Tywc1zmOoCQ2xhHYyz8ULBU4KjIJQ9n+Lrty74iVw==}
+
   '@vueuse/core@14.3.0':
     resolution: {integrity: sha512-aHfz47g0ZhMtTVHmIzMVpJy8ePhhOy68GY5bv110+5DVtZ+W7BsOx+m61UNQqfrWyPztIHIanWa3E2tib3NFIw==}
     peerDependencies:
       vue: ^3.5.0
 
+  '@vueuse/metadata@10.8.0':
+    resolution: {integrity: sha512-Nim/Vle5OgXcXhAvGOgkJQXB1Yb+Kq/fMbLuv3YYDYbiQrwr39ljuD4k9fPeq4yUyokYRo2RaNQmbbIMWB/9+w==}
+
   '@vueuse/metadata@14.3.0':
     resolution: {integrity: sha512-BwxmbAzwAVF50+MW57GXOUEV61nFBGnlBvrTqj49PqWJu3uw7hdu72ztXeZ33RdZtDY6kO+bfCAE1PCn88Tktw==}
+
+  '@vueuse/shared@10.8.0':
+    resolution: {integrity: sha512-dUdy6zwHhULGxmr9YUg8e+EnB39gcM4Fe2oKBSrh3cOsV30JcMPtsyuspgFCUo5xxFNaeMf/W2yyKfST7Bg8oQ==}
 
   '@vueuse/shared@14.3.0':
     resolution: {integrity: sha512-bZpge9eSXwa4ToSiqJ7j6KRwhAsneMFoSz3LMWKQDkqimm3D/tbFlrklrs/IOqC8tEcYmXQZJ6N0UrjhBirVCg==}
@@ -1300,6 +1315,12 @@ packages:
   unplugin@3.0.0:
     resolution: {integrity: sha512-0Mqk3AT2TZCXWKdcoaufeXNukv2mTrEZExeXlHIOZXdqYoHHr4n51pymnwV8x2BOVxwXbK2HLlI7usrqMpycdg==}
     engines: {node: ^20.19.0 || >=22.12.0}
+
+  vaul-vue@0.4.1:
+    resolution: {integrity: sha512-A6jOWOZX5yvyo1qMn7IveoWN91mJI5L3BUKsIwkg6qrTGgHs1Sb1JF/vyLJgnbN1rH4OOOxFbtqL9A46bOyGUQ==}
+    peerDependencies:
+      reka-ui: ^2.0.0
+      vue: ^3.3.0
 
   vee-validate@4.15.1:
     resolution: {integrity: sha512-DkFsiTwEKau8VIxyZBGdO6tOudD+QoUBPuHj3e6QFqmbfCRj1ArmYWue9lEp6jLSWBIw4XPlDLjFIZNLdRAMSg==}
@@ -1876,6 +1897,8 @@ snapshots:
     dependencies:
       undici-types: 7.24.6
 
+  '@types/web-bluetooth@0.0.20': {}
+
   '@types/web-bluetooth@0.0.21': {}
 
   '@vee-validate/zod@4.15.1(vue@3.5.35(typescript@5.6.2))(zod@3.25.76)':
@@ -2034,6 +2057,16 @@ snapshots:
 
   '@vue/shared@3.5.35': {}
 
+  '@vueuse/core@10.8.0(vue@3.5.35(typescript@5.6.2))':
+    dependencies:
+      '@types/web-bluetooth': 0.0.20
+      '@vueuse/metadata': 10.8.0
+      '@vueuse/shared': 10.8.0(vue@3.5.35(typescript@5.6.2))
+      vue-demi: 0.14.10(vue@3.5.35(typescript@5.6.2))
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
+
   '@vueuse/core@14.3.0(vue@3.5.35(typescript@5.6.2))':
     dependencies:
       '@types/web-bluetooth': 0.0.21
@@ -2041,7 +2074,16 @@ snapshots:
       '@vueuse/shared': 14.3.0(vue@3.5.35(typescript@5.6.2))
       vue: 3.5.35(typescript@5.6.2)
 
+  '@vueuse/metadata@10.8.0': {}
+
   '@vueuse/metadata@14.3.0': {}
+
+  '@vueuse/shared@10.8.0(vue@3.5.35(typescript@5.6.2))':
+    dependencies:
+      vue-demi: 0.14.10(vue@3.5.35(typescript@5.6.2))
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
 
   '@vueuse/shared@14.3.0(vue@3.5.35(typescript@5.6.2))':
     dependencies:
@@ -2416,6 +2458,14 @@ snapshots:
       '@jridgewell/remapping': 2.3.5
       picomatch: 4.0.4
       webpack-virtual-modules: 0.6.2
+
+  vaul-vue@0.4.1(reka-ui@2.9.8(vue@3.5.35(typescript@5.6.2)))(vue@3.5.35(typescript@5.6.2)):
+    dependencies:
+      '@vueuse/core': 10.8.0(vue@3.5.35(typescript@5.6.2))
+      reka-ui: 2.9.8(vue@3.5.35(typescript@5.6.2))
+      vue: 3.5.35(typescript@5.6.2)
+    transitivePeerDependencies:
+      - '@vue/composition-api'
 
   vee-validate@4.15.1(vue@3.5.35(typescript@5.6.2)):
     dependencies:
