@@ -44,6 +44,9 @@ class HttpClient {
   async options(url: string): Promise<ResponseData> {
     return invoke('http_options', { url })
   }
+  async get_with_config(config: RequestConfig):Promise<ResponseData>{
+    return invoke('http_get_option', { config })
+  }
 }
 
 export const http = new HttpClient()

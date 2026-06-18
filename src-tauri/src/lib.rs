@@ -20,6 +20,17 @@ pub fn run() {
             http::commands::http_delete,
             http::commands::http_head,
             http::commands::http_options,
+            crypto_core::commands::crypto_md5,
+            crypto_core::commands::crypto_sha1,
+            crypto_core::commands::crypto_sha256,
+            crypto_core::commands::crypto_sha512,
+            crypto_core::commands::crypto_aes_encrypt,
+            crypto_core::commands::crypto_aes_decrypt,
+            crypto_core::commands::crypto_rsa_generate_keypair,
+            crypto_core::commands::crypto_rsa_encrypt,
+            crypto_core::commands::crypto_rsa_decrypt,
+            crypto_core::commands::crypto_sign,
+            crypto_core::commands::crypto_verify,
         ])
         .setup(|app| {
             let window = app.get_webview_window("StatusWindow").unwrap();

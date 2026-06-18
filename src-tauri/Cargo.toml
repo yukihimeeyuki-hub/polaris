@@ -30,6 +30,11 @@ h2 = "^0.4.14"
 rusqlite="0.40.0"
 ring="0.17.14"
 base64 = "0.22.1"
+hex = "0.4"
+md-5 = "0.10"
+sha2 = { version = "0.10", features = ["oid"] }
+rsa = { version = "0.9", features = ["pkcs5", "pem"] }
+rand = "0.8"
 tauri-runtime-wry="2.11.2"
 log = "0.4.31"
 tauri-plugin-log = "2.8.0"
