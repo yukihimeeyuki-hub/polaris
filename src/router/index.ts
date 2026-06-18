@@ -11,6 +11,14 @@ const router=createRouter({
     path:"/PromptBox",
     name:"PromptBox",
     component:()=>import("@/view/PromptBox.vue"),
+  },{
+    path:"/Login",
+    name:"Login",
+    component:()=>import("@/view/Login/index.vue"),
+  },{
+    path:"/errors",
+    name:"errors",
+    component:()=>import("@/view/Errors/index.vue"),
   }],
 });
 export default router;
